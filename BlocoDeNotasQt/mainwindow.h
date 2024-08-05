@@ -16,12 +16,14 @@ class MainWindow : public QMainWindow
     public:
         MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
-        void iniciar(void);
+
     private:
         Ui::MainWindow ui;
+        void iniciar(void);
+
     private slots:
         void criar(void);
-        //void salvar(void);
-        //void abrir(void);
+        void salvar(void);
+        void abrir(void);
 };
 #endif // MAINWINDOW_H

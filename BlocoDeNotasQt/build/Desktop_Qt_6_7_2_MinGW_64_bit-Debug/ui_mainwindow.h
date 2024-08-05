@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -27,6 +28,9 @@ public:
     QWidget *centralwidget;
     QTextEdit *td_;
     QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *leArquiv;
+    QLabel *lbSave;
     QHBoxLayout *horizontalLayout;
     QPushButton *btnNovo;
     QPushButton *btnAbrir;
@@ -46,10 +50,26 @@ public:
         td_->setGeometry(QRect(10, 40, 781, 511));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(10, 10, 341, 26));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
+        layoutWidget->setGeometry(QRect(20, 10, 462, 30));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        leArquiv = new QLabel(layoutWidget);
+        leArquiv->setObjectName("leArquiv");
+        QFont font;
+        font.setPointSize(16);
+        leArquiv->setFont(font);
+
+        horizontalLayout_2->addWidget(leArquiv);
+
+        lbSave = new QLabel(layoutWidget);
+        lbSave->setObjectName("lbSave");
+        lbSave->setFont(font);
+
+        horizontalLayout_2->addWidget(lbSave);
+
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         btnNovo = new QPushButton(layoutWidget);
         btnNovo->setObjectName("btnNovo");
 
@@ -64,6 +84,9 @@ public:
         btnSalvar->setObjectName("btnSalvar");
 
         horizontalLayout->addWidget(btnSalvar);
+
+
+        horizontalLayout_2->addLayout(horizontalLayout);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -82,6 +105,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        leArquiv->setText(QString());
+        lbSave->setText(QString());
         btnNovo->setText(QCoreApplication::translate("MainWindow", "Novo", nullptr));
         btnAbrir->setText(QCoreApplication::translate("MainWindow", "Abrir", nullptr));
         btnSalvar->setText(QCoreApplication::translate("MainWindow", "Salvar", nullptr));
